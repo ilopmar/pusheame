@@ -8,6 +8,8 @@ class InstagramService {
 
 	Random random = new Random()
 
+	def clientId = "15caef3eae0245c382291b28d0485831"
+
 	def pictures = [
 		[url:"http://distilleryimage1.s3.amazonaws.com/d18c4ca4483911e29d8c22000a1fbd8b_7.jpg", latitude:63.974079132, longitude:-22.576965332],
 		[url:"http://distilleryimage8.s3.amazonaws.com/12d89e2e483511e2ace922000a1f90f6_7.jpg", latitude:48.866475499, longitude:2.350620338],
@@ -45,7 +47,7 @@ class InstagramService {
 	}
 
 	public List getPictures() {
-		def clientId = "15caef3eae0245c382291b28d0485831"
+		
 
 		def url = "https://api.instagram.com/v1/media/popular?client_id=${clientId}"
 		def content = new URL(url).getText("UTF-8")
@@ -71,6 +73,31 @@ class InstagramService {
 		}
 
 		return result
+	}
+
+	@grails.events.Listener(topic = 'processPicture')
+	public getPictureByGeographic(String objectId) {
+		def url = "https://api.instagram.com/v1/geographies/${objectId}/media/recent?client_id=${clientId}&count=1"
+		def content = new URL(url).getText("UTF-8")
+		def slurper = new JsonSlurper()
+		def response = slurper.parseText(content)
+
+		def result = []
+
+		response.data.each { picture ->
+			def map = [:]
+
+			map.instagramId = picture.id
+			map.title = picture.caption?.text
+			map.url = picture.images.standard_resolution.url
+			map.thumbUrl = picture.images.thumbnail.url
+			map.author = picture.caption?.from?.username
+            map.latitude = picture.location?.latitude
+            map.longitude = picture.location?.longitude
+
+            // Push the photo to the browser
+            event topic:'instagramPicture', data:map.encodeAsJSON()
+		}
 	}
 
 }

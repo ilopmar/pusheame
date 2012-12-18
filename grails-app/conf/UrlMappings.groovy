@@ -14,6 +14,8 @@ class UrlMappings {
 		// Instagram
 		name instgrmMap: "/map" { controller = 'instagram'; action = [GET:'map'] }
 		name instgrmTest: "/instagram-test" { controller = 'instagram'; action = [GET:'test'] }
+		name instgrmRealTime: "/instagram-real-time" { controller = 'instagram'; action = [GET:'verifyRealTime', POST:'realTime'] }
+	
 
 		"/"(view:"/index")
 		"500"(view:'/error')

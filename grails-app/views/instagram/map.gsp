@@ -39,7 +39,7 @@
 
 			var popup = L.popup({minWidth:100})
 			    .setLatLng([photo.latitude, photo.longitude])
-			    .setContent("<img src='" + photo.url + "' width='100' />")
+			    .setContent("<img src='" + photo.thumbUrl + "' width='100' />")
 			    .openOn(map);
 		});
 	</r:script>
