@@ -19,12 +19,6 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="header">
-			<g:link uri="/">
-				<img src="${resource(dir: 'images', file: 'pusheame-logo.png')}" alt="Pusheame"/>
-			</g:link>
-		</div>
-
 		<g:layoutBody/>
 
 		<div class="footer" role="contentinfo"></div>

@@ -40,7 +40,7 @@
 
 	<%-- Handlebars timeline template --%>
 	<script id="pic-template" type="text/x-handlebars-template">
-		<div class="pic">
+		<div class="pic" style="display:none">
 			<img src="{{url}}">
 			<div class="right">
 				<p class="user">{{username}}</p>
@@ -56,24 +56,32 @@
 		var map = L.map('map', {
     		zoomControl: false
 		}).setView([40, -108], 4); // Center in USA
+		//}).setView([10, 30], 2); // World
 
 		//L.tileLayer('http://{s}.tile.cloudmade.com/cd191a488b7a4c998c9645068f971ce0/997/256/{z}/{x}/{y}.png', {
 		//L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		//L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
 
-		// Para sólo EEUU mola
+		// Only for USA
 		L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg', {
 		//L.tileLayer('http://{s}.tile.cloudmade.com/cd191a488b7a4c998c9645068f971ce0/1/256/{z}/{x}/{y}.png', {
-    		//attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
     		maxZoom: 18
 		}).addTo(map);
 
+/*
+		var popup = L.popup({
+			minWidth: 100
+		})
+    		.setLatLng([40, -108])
+    		.setContent("<img src='http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg' width='100' />")
+    		.openOn(map);
+
 		var a = L.marker([50.5, 30.5]).addTo(map);
-		a.bindPopup("<img src='http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg' width='100' />"); //.openPopup();
+		a.bindPopup("<img src='http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg' width='100' />").openPopup();
 
 		var a = L.marker([0.5, -30.5]).addTo(map);
 		a.bindPopup("<img src='http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg' width='100' />"); //.openPopup();
-
+*/
 		// var marker = L.marker([22.283016667, 114.173061111]).addTo(map);
 		// marker.bindPopup("<img src='http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg' width='100' />"); //.openPopup();
 	</r:script>
@@ -83,9 +91,24 @@
 		var source = $("#pic-template").html();
 		var template = Handlebars.compile(source);
 
+		var photoMarker;
+		var smallIcon;
+
+		/*
+		$(".pic").on("load", function() {
+			//$(this).show();
+			alert("ASDASD");
+		});
+		*/
+
+
 		var grailsEvents = new grails.Events("${createLink(uri:'/', absolute:true)}");
 
 		grailsEvents.on('instagramPicture', function(data) {
+			if (photoMarker) {
+				photoMarker.setZIndexOffset(-500);
+				photoMarker.setIcon(smallIcon);
+			}
 			photo = jQuery.parseJSON(data);
 
 			//map.panTo([photo.latitude, photo.longitude]);
@@ -98,10 +121,26 @@
 			var html = template(context);
 			$('#timelinePics').prepend(html);
 
-			var popup = L.popup({minWidth:100})
-			    .setLatLng([photo.latitude, photo.longitude])
-			    .setContent("<img src='" + photo.thumbUrl + "' width='100' />")
-			    .openOn(map);
+			$("#timelinePics .pic").on("load", function() {
+				alert("asd");
+			});
+
+			$('#timelinePics .pic:first-child').slideDown();
+
+
+			//var img = $("<img>").attr("src", photo.thumbUrl);
+
+			var bigIcon = L.icon({
+    			iconUrl: photo.thumbUrl,
+    			iconSize:     [100, 100],
+    			iconAnchor:   [50, 50]
+			});
+			smallIcon = L.icon({
+    			iconUrl: photo.thumbUrl,
+    			iconSize:     [40, 40],
+    			iconAnchor:   [20, 20]
+			});
+			photoMarker = L.marker([photo.latitude, photo.longitude], {icon: bigIcon, zIndex:1000}).addTo(map);
 		});
 	</r:script>
 
