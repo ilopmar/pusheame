@@ -3,4 +3,5 @@ events = {
     //'randomNumber' browser:true, scope:'*' // allows browser push on this topic
     'instagramPicture' browser:true, scope:'*'
     'processPicture' scope:'*'
+    'timeline' browser:true, scope:'*'
 }

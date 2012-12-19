@@ -95,8 +95,13 @@ class InstagramService {
             map.latitude = picture.location?.latitude
             map.longitude = picture.location?.longitude
 
-            // Push the photo to the browser
-            event topic:'instagramPicture', data:map.encodeAsJSON()
+            // Push the photo to the timeline
+            event topic:'timeline', data:map.encodeAsJSON()
+
+            if (picture.location) {
+            	// Push the photo to the map
+            	event topic:'instagramPicture', data:map.encodeAsJSON()
+            }
 		}
 	}
 

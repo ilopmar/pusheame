@@ -10,13 +10,17 @@ class InstagramController {
 		render view:'/instagram/map'
 	}
 
+	def timeline() {
+		render view:'/instagram/timeline'
+	}
 
-	def test() {
-		// def pictures = instagramService.getPictures()
-		// render view:'/instagram/test', model:[pictures:pictures]
-
-		def picture = instagramService.randomPicture()
-		event topic:'instagramPicture', data:picture.encodeAsJSON()
+	/**
+	 * Verify the real-time Instagram subscription
+	 */
+	def verifyRealTime() {
+		println "Verifying subscription"
+		// Return only the hub.challenge to confirm the subscription to the real-time API
+		render params["hub.challenge"]
 	}
 
 	/**
@@ -27,21 +31,32 @@ class InstagramController {
 		println new Date()
 		def photos = request.JSON
 
+		println photos
+
 		photos.each { photo ->
-			// Process the picture
-			event topic:'processPicture', data:photo.object_id
-			//instagramService.getPictureByGeographic(photo.object_id)
+
+			if (photo.object == "tag") {
+
+			} else if (photo.object == "geography") {
+				// Process the picture
+				event topic:'processPicture', data:photo.object_id
+				//instagramService.getPictureByGeographic(photo.object_id)				
+			}
 		}
 
 		return render(text:[success:true] as JSON, contentType:'text/json')
 	}
 
-	/**
-	 * Verify the real-time Instagram subscription
-	 */
-	def verifyRealTime() {
-		// Return only the hub.challenge to confirm the subscription to the real-time API
-		render params["hub.challenge"]
-	}
 
+
+	def test() {
+		// def pictures = instagramService.getPictures()
+		// render view:'/instagram/test', model:[pictures:pictures]
+
+		// def picture = instagramService.randomPicture()
+		// event topic:'instagramPicture', data:picture.encodeAsJSON()
+
+		def picture = [url:"http://distilleryimage8.s3.amazonaws.com/2202dbbc48f311e283b822000a9f124c_6.jpg", latitude:63.974079132, longitude:-22.576965332]
+		event topic:'timeline', data:picture.encodeAsJSON()
+	}
 }
