@@ -13,7 +13,7 @@ class UrlMappings {
 
 		// Instagram
 		name instgrmMap: "/map" { controller = 'instagram'; action = [GET:'map'] }
-		name instgrmTimeline: "/timeline" { controller = 'instagram'; action = [GET:'timeline'] }
+		name instgrmWall: "/wall" { controller = 'instagram'; action = [GET:'wall'] }
 		name instgrmTest: "/test" { controller = 'instagram'; action = [GET:'test'] }
 		name instgrmRealTime: "/instagram-real-time" { controller = 'instagram'; action = [GET:'verifyRealTime', POST:'realTime'] }
 	
