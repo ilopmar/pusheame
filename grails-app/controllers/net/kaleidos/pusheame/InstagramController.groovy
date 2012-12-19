@@ -10,8 +10,8 @@ class InstagramController {
 		render view:'/instagram/map'
 	}
 
-	def timeline() {
-		render view:'/instagram/timeline'
+	def wall() {
+		render view:'/instagram/wall'
 	}
 
 	/**
