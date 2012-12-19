@@ -4,14 +4,10 @@
 	<title>Pusheame - Instagram</title>
 
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
-	<!--[if lte IE 8]>
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
-	<![endif]-->
-
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'app.css')}" type="text/css">
-
 	<script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>
-	<script type="text/javascript" src="${resource(dir: 'js', file: 'handlebars-1.0.rc.1.js')}"></script>
+
+	<r:require modules="app"/>
+	<r:require module="grailsEvents"/>
 	
 </head>
 
@@ -33,58 +29,8 @@
 					<p>Лапки замерзли ну все равно хочу играться ...</p>
 				</div>
 			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
-			<div class="pic">
-				<img src="http://distilleryimage6.s3.amazonaws.com/1ac0c73c3ea411e2aae322000a1f9858_7.jpg">
-				<div class="right">
-					<p class="user">anarochka</p>
-					<p>Лапки замерзли ну все равно хочу играться ...</p>
-				</div>
-			</div>
 			--%>
 		</div>
-
 
 		<div id="footer">
 			Iván López - <a href="https://twitter.com/ilopmar" target="blank">@ilopmar</a> - 2012
@@ -109,15 +55,15 @@
 	<r:script>
 		var map = L.map('map', {
     		zoomControl: false
-		}).setView([30, 0], 3);
+		}).setView([40, -108], 4); // Center in USA
 
 		//L.tileLayer('http://{s}.tile.cloudmade.com/cd191a488b7a4c998c9645068f971ce0/997/256/{z}/{x}/{y}.png', {
 		//L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		//L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
 
 		// Para sólo EEUU mola
-		//L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg', {
-		L.tileLayer('http://{s}.tile.cloudmade.com/cd191a488b7a4c998c9645068f971ce0/1/256/{z}/{x}/{y}.png', {
+		L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg', {
+		//L.tileLayer('http://{s}.tile.cloudmade.com/cd191a488b7a4c998c9645068f971ce0/1/256/{z}/{x}/{y}.png', {
     		//attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
     		maxZoom: 18
 		}).addTo(map);
@@ -159,7 +105,5 @@
 		});
 	</r:script>
 
-
-	<r:require module="grailsEvents"/>
 </body>
 </html>
