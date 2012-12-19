@@ -53,10 +53,10 @@ class InstagramController {
 		// def pictures = instagramService.getPictures()
 		// render view:'/instagram/test', model:[pictures:pictures]
 
-		// def picture = instagramService.randomPicture()
-		// event topic:'instagramPicture', data:picture.encodeAsJSON()
+		def picture = instagramService.randomPicture()
+		event topic:'instagramPicture', data:picture.encodeAsJSON()
 
-		def picture = [url:"http://distilleryimage8.s3.amazonaws.com/2202dbbc48f311e283b822000a9f124c_6.jpg", latitude:63.974079132, longitude:-22.576965332]
-		event topic:'timeline', data:picture.encodeAsJSON()
+		// def picture = [url:"http://distilleryimage8.s3.amazonaws.com/2202dbbc48f311e283b822000a9f124c_6.jpg", latitude:63.974079132, longitude:-22.576965332]
+		// event topic:'timeline', data:picture.encodeAsJSON()
 	}
 }

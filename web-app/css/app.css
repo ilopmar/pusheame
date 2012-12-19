@@ -61,8 +61,75 @@ a {
 }
 
 #map { 
-	height: 800px;
+	/*height: 800px;*/
+	top: 0;
+	left: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
 }
+
+#column {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 295px;
+}
+
+#logo {
+	background-color: #fff;
+	border: 5px solid #656565;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+#timelinePics {
+	background-color: #fff;
+	border: 5px solid #656565;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 10px;
+	min-height: 400px;
+	max-height: 600px;
+	overflow: auto;
+}
+
+#timelinePics .pic {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px dotted #656565;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+#timelinePics .pic img {
+	float: left;
+	width: 100px;
+	height: 100px;
+}
+
+#timelinePics .right {
+	float: left;
+	margin-left: 5px;
+	width: 140px;
+	font-size: 12px;
+}
+
+#timelinePics .user {
+	font-size: 13px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+
+#footer {
+	background-color: #fff;
+	border: 5px solid #656565;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
 
 
 #timeline {
