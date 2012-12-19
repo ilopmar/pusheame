@@ -20,5 +20,6 @@ class UrlMappings {
 
 		"/"(view:"/index")
 		"500"(view:'/error')
+		"/favicon.ico"(uri:'/favicon.ico')
 	}
 }
