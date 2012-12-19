@@ -21,8 +21,7 @@
 	<body>
 		<div id="header">
 			<g:link uri="/">
-				<%-- <img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Pusheame"/> --%>
-				<p>Pusheame</p>
+				<img src="${resource(dir: 'images', file: 'pusheame-logo.png')}" alt="Pusheame"/>
 			</g:link>
 		</div>
 
