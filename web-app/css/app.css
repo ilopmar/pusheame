@@ -47,7 +47,29 @@ table {
 
 a {
 	text-decoration: none;
-	color: #656565;
+	color: #0F6DB8;
+}
+
+#main {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#main h1 {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+#main p {
+	margin-bottom: 15px;
+}
+
+#main li {
+	margin-bottom: 4px;
+}
+
+#main .source {
+	margin-top: 30px;
 }
 
 #header {

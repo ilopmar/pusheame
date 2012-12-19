@@ -16,10 +16,10 @@
 		<div id="main">
 			<h1>Welcome to Pusheame</h1>
 			<p>
-				Pusheame is a proof-of-concept of the following Grails plugins 
+				Pusheame is a proof-of-concept of the 
 				<a href="http://grails.org/plugin/platform-core" target="blank">platform-core</a> and 
-				<a href="http://grails.org/plugin/events-push" target="blank">events-push</a> developed during 
-				the 3rd <a href="http://kaleidos.net/" target="blank">Kaleidos</a> 
+				<a href="http://grails.org/plugin/events-push" target="blank">events-push</a> Grails plugins.
+				The application has been developed during the 3rd <a href="http://kaleidos.net/" target="blank">Kaleidos</a> 
 				<a href="http://piweek.es/" target="blank">PiWeek</a>.
 			</p>
 			<p>
@@ -39,8 +39,13 @@
 				</ul>
 			</div>
 
-			<p>
-				The source code of this project is at my github account
+			<div class="source">
+				<p>
+					The source code of this project is at my github account: 
+					<a href="https://github.com/lmivan/pusheame">https://github.com/lmivan/pusheame</a>
+				</p>
+				<p>Follow me on twitter: <a href="https://twitter.com/ilopmar">@ilopmar</a></p>
+			</div>
 
 		</div>
 	</body>
