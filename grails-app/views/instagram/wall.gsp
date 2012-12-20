@@ -3,7 +3,8 @@
 	<meta name='layout' content='main'/>
 	<title>Pusheame</title>
 
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'app.css')}" type="text/css">
+	<r:require modules="app"/>
+	<r:require module="grailsEvents"/>
 </head>
 
 <body>
@@ -15,31 +16,41 @@
 	</div>
 
 	<div id="timeline">
-		<%--
-		<div class="photo">
-			<img src="http://distilleryimage4.s3.amazonaws.com/b66e1b74490011e2a73f22000a9e28ad_6.jpg"/>
-		</div>
-
-		<div class="photo">
-			<img src="http://distilleryimage8.s3.amazonaws.com/2202dbbc48f311e283b822000a9f124c_6.jpg" />
-		</div> --%>
 	</div>
-	
 
+	<%-- Handlebars timeline template --%>
+	<script id="pic-template" type="text/x-handlebars-template">
+		<div class="photo" style="visibility:hidden; height:0;">
+			<img src="{{url}}" />
+		</div>
+	</script>
+	
 	<r:script>
+		var source = $("#pic-template").html();
+		var template = Handlebars.compile(source);
+
 		var grailsEvents = new grails.Events("${createLink(uri:'/', absolute:true)}");
 
 		grailsEvents.on('timeline', function(data) {
 			photo = jQuery.parseJSON(data);
 
-			var img = $("<img>").attr("src", photo.url);
-			var div = $("<div>").addClass("photo").append(img);
+			// Append the new object to the timeline
+			var context = {
+				url: photo.url
+			}
+			var html = template(context);
+			$('#timeline').prepend(html);
 
-			$('#timeline').prepend(div);
+			$("#timeline .photo:first-child img").on("load", function() {
+				$(this).parent().css({
+					display: 'none',
+					visibility: 'visible',
+					height: 'auto'
+				});
+
+				$(this).parent().slideDown();
+			});
 		});
 	</r:script>
-
-
-	<r:require module="grailsEvents"/>
 </body>
 </html>
