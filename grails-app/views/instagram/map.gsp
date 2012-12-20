@@ -40,7 +40,7 @@
 
 	<%-- Handlebars timeline template --%>
 	<script id="pic-template" type="text/x-handlebars-template">
-		<div class="pic" style="display:none">
+		<div class="pic" style="visibility:hidden; height:0;">
 			<img src="{{url}}">
 			<div class="right">
 				<p class="user">{{username}}</p>
@@ -88,18 +88,16 @@
 		
 
 	<r:script>
+		// Change the heigth of the timeline
+		$('#timelinePics').animate({
+			height: $(window).height() - 230
+		}, 1000);
+
 		var source = $("#pic-template").html();
 		var template = Handlebars.compile(source);
 
 		var photoMarker;
 		var smallIcon;
-
-		/*
-		$(".pic").on("load", function() {
-			//$(this).show();
-			alert("ASDASD");
-		});
-		*/
 
 
 		var grailsEvents = new grails.Events("${createLink(uri:'/', absolute:true)}");
@@ -121,14 +119,15 @@
 			var html = template(context);
 			$('#timelinePics').prepend(html);
 
-			$("#timelinePics .pic").on("load", function() {
-				alert("asd");
+			$("#timelinePics .pic:first-child img").on("load", function() {
+				$(this).parent().css({
+					display: 'none',
+					visibility: 'visible',
+					height: 'auto'
+				});
+
+				$(this).parent().slideDown();
 			});
-
-			$('#timelinePics .pic:first-child').slideDown();
-
-
-			//var img = $("<img>").attr("src", photo.thumbUrl);
 
 			var bigIcon = L.icon({
     			iconUrl: photo.thumbUrl,
