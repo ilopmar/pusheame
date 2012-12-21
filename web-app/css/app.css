@@ -163,11 +163,13 @@ a {
 }
 
 #timeline .photo {
-	float: left;
-	background-color: #A0A0A0;
-	padding: 5px 5px 40px 5px;
-	margin: 0 10px 20px 0;
-	border-radius: 5px;
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0 10px 20px 0;
+    padding: 5px 5px 40px;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
 }
 
 #timeline .photo img {

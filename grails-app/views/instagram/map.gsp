@@ -17,7 +17,7 @@
 
 	<div id="column">
 		<div id="logo">
-			<img src="${resource(dir: 'images', file: 'pusheame-logo-small.png')}" alt="Pusheame"/>
+			<g:link uri="/"><img src="${resource(dir: 'images', file: 'pusheame-logo.png')}" alt="Pusheame"/></g:link>
 		</div>	
 
 		<div id="timelinePics">
@@ -46,8 +46,9 @@
 		}).setView([40, -108], 4); // Center in USA
 		//}).setView([10, 30], 2); // World
 
-		L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg', {
+		//L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		//L.tileLayer('http://{s}.tile.cloudmade.com/cd191a488b7a4c998c9645068f971ce0/1/256/{z}/{x}/{y}.png', {
+		L.tileLayer('http://otile2.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg', {
     		maxZoom: 18
 		}).addTo(map);
 	</r:script>

@@ -10,9 +10,7 @@
 <body>
 
 	<div id="header">
-		<g:link uri="/">
-			<img src="${resource(dir: 'images', file: 'pusheame-logo.png')}" alt="Pusheame"/>
-		</g:link>
+		<g:link uri="/"><img src="${resource(dir: 'images', file: 'pusheame-logo.png')}" alt="Pusheame"/></g:link>
 	</div>
 
 	<div id="timeline">
