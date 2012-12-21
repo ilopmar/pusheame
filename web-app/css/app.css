@@ -101,9 +101,11 @@ a {
 
 #logo {
 	background-color: #fff;
-	border: 5px solid #656565;
-	border-radius: 5px;
 	padding: 10px;
+    margin: 0 10px 20px 0;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
 }
 
 #logo img {
@@ -114,19 +116,21 @@ a {
 
 #timelinePics {
 	background-color: #fff;
-	border: 5px solid #656565;
-	border-radius: 5px;
-	padding: 10px;
 	margin-top: 10px;
 	overflow: auto;
+	padding: 5px;
+    margin: 0 10px 20px 0;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
 }
 
 #timelinePics .pic {
-	width: 100%;
-	overflow: hidden;
-	border-bottom: 1px dotted #656565;
-	margin-bottom: 5px;
-	padding-bottom: 5px;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding-bottom: 5px;
+    width: 100%;
 }
 
 #timelinePics .pic img {
@@ -148,13 +152,15 @@ a {
 	font-weight: bold;
 }
 
-
 #footer {
 	background-color: #fff;
-	border: 5px solid #656565;
-	border-radius: 5px;
 	padding: 10px;
 	margin-top: 10px;
+	text-align: center;
+    margin: 0 10px 20px 0;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
+	box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.6);
 }
 
 
