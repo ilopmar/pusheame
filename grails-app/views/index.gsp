@@ -24,7 +24,7 @@
 			</p>
 			<p>
 				The goal of the application is get geolocalized pictures from Instagram Real-Time API and display them in a map
-				in real time. A wall with all the pictures received is also available.
+				also in real-time. In addition, you can enjoy a wall full of the received pictures.
 			</p>
 
 			<div>
