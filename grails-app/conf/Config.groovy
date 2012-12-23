@@ -89,3 +89,17 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+grails.mongo.default.mapping = {
+    version false
+}
+
+grails {
+    mongo {
+        host = "localhost"
+        port = 27017
+        username = "blah"
+        password = "blah"
+        databaseName = "pusheame"
+    }
+}
