@@ -5,13 +5,15 @@ import groovy.json.JsonSlurper
 class InstagramService {
 
 	static transactional = false
+	def mongo
+
 
 	Random random = new Random()
 
 	def clientId = "15caef3eae0245c382291b28d0485831"
 
 	def pictures = [
-		[username:"Iván", caption:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.", thumbUrl:"http://distilleryimage1.s3.amazonaws.com/d18c4ca4483911e29d8c22000a1fbd8b_7.jpg", url:"http://distilleryimage1.s3.amazonaws.com/d18c4ca4483911e29d8c22000a1fbd8b_7.jpg", latitude:63.974079132, longitude:-22.576965332],
+		[username:"Iván", caption:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.", thumbUrl:"http://distilleryimage1.s3.amazonaws.com/d18c4ca4483911e29d8c22000a1fbd8b_7.jpg", url:"http://distilleryimage1.s3.amazonaws.com/d18c4ca4483911e29d8c22000a1fbd8b_7.jpg", latitude:63.974079132 as Float, longitude:-22.576965332 as Float],
 		[username:"Iván", caption:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.", thumbUrl:"http://distilleryimage8.s3.amazonaws.com/12d89e2e483511e2ace922000a1f90f6_7.jpg", url:"http://distilleryimage8.s3.amazonaws.com/12d89e2e483511e2ace922000a1f90f6_7.jpg", latitude:48.866475499, longitude:2.350620338],
 		[username:"Iván", caption:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.", thumbUrl:"http://distilleryimage7.s3.amazonaws.com/f9f0623c483b11e2900e22000a1f96c7_7.jpg", url:"http://distilleryimage7.s3.amazonaws.com/f9f0623c483b11e2900e22000a1f96c7_7.jpg", latitude:14.642080307, longitude:121.037803649],
 		[username:"Iván", caption:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.", thumbUrl:"http://distilleryimage7.s3.amazonaws.com/db24bde0483a11e29e0522000a1fa50c_7.jpg", url:"http://distilleryimage7.s3.amazonaws.com/db24bde0483a11e29e0522000a1fa50c_7.jpg", latitude:13.745900735, longitude:100.535358315],
@@ -43,7 +45,8 @@ class InstagramService {
 	public randomPicture() {
 		def size = pictures.size()
 
-		return pictures[random.nextInt(size-1)]
+		//return pictures[random.nextInt(size-1)]
+		return pictures[0]
 	}
 
 	public List getPictures() {
@@ -102,6 +105,8 @@ class InstagramService {
             	// Push the photo to the map
             	event topic:'instagramPicture', data:picture.encodeAsJSON()
             }
+
+            db.photos.insert(instagramPic)
 		}
 	}
 
