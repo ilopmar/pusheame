@@ -17,6 +17,8 @@
 		
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 
+		<g:render template="/includes/googleAnalytics" />
+
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
