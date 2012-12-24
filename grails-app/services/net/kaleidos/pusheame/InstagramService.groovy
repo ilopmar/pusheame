@@ -42,45 +42,21 @@ class InstagramService {
 
 	public randomPicture() {
 		def size = pictures.size()
-
 		return pictures[random.nextInt(size-1)]
 	}
 
-	public List getPictures() {
-		def url = "https://api.instagram.com/v1/media/popular?client_id=${clientId}"
-		def content = new URL(url).getText("UTF-8")
-		def slurper = new JsonSlurper()
-		def response = slurper.parseText(content)
-
-		def result = []
-
-		response.data.each { picture ->
-			def map = [:]
-
-			if (picture.location) {
-				map.instagramId = picture.id
-				map.title = picture.caption?.text
-				//map.url = picture.images.standard_resolution.url
-				map.url = picture.images.thumbnail.url
-				map.author = picture.caption?.from?.username
-                map.latitude = picture.location.latitude
-                map.longitude = picture.location.longitude
-
-				result << map
-			}
-		}
-
-		return result
-	}
-
+	/**
+	 * Process a real-time geographic update. Get the picture and push it to the browser
+	 *
+	 * @objectId The id of the geographic location
+	 *
+	 */
 	@grails.events.Listener(topic = 'processPicture')
 	public getPictureByGeographic(String objectId) {
 		def url = "https://api.instagram.com/v1/geographies/${objectId}/media/recent?client_id=${clientId}&count=1"
 		def content = new URL(url).getText("UTF-8")
 		def slurper = new JsonSlurper()
 		def response = slurper.parseText(content)
-
-		def result = []
 
 		response.data.each { instagramPic ->
 			def picture = [:]
@@ -104,5 +80,4 @@ class InstagramService {
             }
 		}
 	}
-
 }
