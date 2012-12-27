@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name='layout' content='main'/>
-	<title>Pusheame</title>
+	<title>Pusheame - Wall</title>
 
 	<r:require modules="app"/>
 	<r:require module="grailsEvents"/>

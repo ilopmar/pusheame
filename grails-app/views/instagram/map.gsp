@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name='layout' content='main'/>
-	<title>Pusheame - Instagram</title>
+	<title>Pusheame - Map</title>
 
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
 	<script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>
