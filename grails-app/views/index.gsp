@@ -38,6 +38,11 @@
 				</ul>
 			</div>
 
+            <p>
+                If you click in the previous links and nothing happens it can be due the application has reached to the maximum number of calls to the Instagram API.
+                Please come back later and try again or watch the video to see how is the demo.
+            </p>
+
 			<div class="source">
 				<p>
 					The source code of this project is at my github account: 
