@@ -1,6 +1,8 @@
 package net.kaleidos.pusheame
 
 import groovy.json.JsonSlurper
+import org.atmosphere.cpr.AtmosphereRequest
+import org.grails.plugin.platform.events.EventMessage
 
 class InstagramService {
 
@@ -79,5 +81,14 @@ class InstagramService {
             	event topic:'instagramPicture', data:picture.encodeAsJSON()
             }
 		}
+	}
+
+	public someMethod(EventMessage message, AtmosphereRequest request) {
+		println "AQUI7 "*10
+		println "message -> ${message}"
+		println "#"*10
+		println "request -> ${request}"
+		println "AQUI7 "*10
+		return true
 	}
 }
