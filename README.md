@@ -1,7 +1,9 @@
 Pusheame
 ========
 
-[![Still maintained](http://stillmaintained.com/lmivan/pusheame.png)](http://stillmaintained.com/lmivan/pusheame")
+[![Still maintained](http://stillmaintained.com/lmivan/pusheame.png)](http://stillmaintained.com/lmivan/pusheame)
+
+
 
 Pusheame is a proof-of-concept of the [platform-core](http://grails.org/plugin/platform-core) and [events-push](http://grails.org/plugin/events-push) Grails plugins.
 The application has been developed during the 3rd [Kaleidos](http://kaleidos.net) [PiWeek](http://piweek.es).
