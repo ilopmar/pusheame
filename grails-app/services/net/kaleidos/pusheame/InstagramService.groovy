@@ -86,6 +86,7 @@ class InstagramService {
 	public someMethod(EventMessage message, AtmosphereRequest request) {
 		println "AQUI7 "*10
 		println "message -> ${message}"
+		println "message -> ${message.event}"
 		println "#"*10
 		println "request -> ${request}"
 		println "AQUI7 "*10

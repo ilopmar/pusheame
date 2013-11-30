@@ -8,7 +8,7 @@ events = {
     //'randomNumber' browser:true, scope:'*' // allows browser push on this topic
     'instagramPicture' browser:true
     'processPicture' scope:'*'
-    'timeline' browser:true, scope:'*', browserFilter: { EventMessage msg, AtmosphereRequest request ->
+    'timeline*' browser:true, scope:'*', browserFilter: { EventMessage msg, AtmosphereRequest request ->
     	println "%"*100
     	println "msg -> ${msg}"
     	println "msg.event -> ${msg.event}"
